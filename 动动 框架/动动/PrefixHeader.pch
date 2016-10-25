@@ -1,0 +1,56 @@
+//
+//  PrefixHeader.pch
+//  动动
+//
+//  Created by tarena on 2016/10/18.
+//  Copyright © 2016年 tad23. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "AppDelegate.h"
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#define MAS_SHORTHAND_GLOBALS
+#import <Masonry.h>
+#import <BlocksKit.h>
+#import <BlocksKit+UIKit.h>
+
+#import <AFNetworking.h>
+//因为UIKit+AFNetworking.h 和 YYKit 有冲突, 都是做图片网络加载
+
+#import <UITableView+FDTemplateLayoutCell.h>
+#import <iCarousel.h>
+
+#import <YYKit.h>
+#import <MJRefresh.h>
+#import <MBProgressHUD.h>
+
+#import "UIPageControl+Custom.h"
+#import "JRObserverInfo.h"
+#import "NSObject+jr_KVO.h"
+#import <objc/objc-runtime.h>
+/*
+#import "NSString+YX.h"
+#import "NSObject+Parse.h"
+#import "UIView+HUD.h"
+#import "UIScrollView+Refresh.h"
+*/
+//[UIColor colorWithRed:0.135 green:0.144 blue:0.157 alpha:1.000]
+//red="0.16038164496421814" green="0.17230203747749329" blue="0.18894511461257935" alpha="1" 
+#define YQBlackColor [UIColor colorWithRed:0.16038164496421814 green:0.17230203747749329 blue:0.18894511461257935 alpha:1.000]
+#define YQOrangeColor [UIColor colorWithRed:0.962 green:0.732 blue:0.165 alpha:1.000]
+
+#pragma mark Category
+#import "UIBarButtonItem+Extension.h"
+#import "UIImage+Extension.h"
+#import "UIView+Extension.h"
+#import "UIColor+Extension.h"
+
+
+
+// 是否为iOS7
+#define iOS7 ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0)
+
+#endif /* PrefixHeader_pch */
