@@ -10,6 +10,7 @@
 #import "YQLeftBarButtonItemTVC.h"
 
 @interface YQNavigationController ()
+@property (nonatomic) UIButton *rightButton;
 
 @end
 
@@ -65,7 +66,7 @@
     }else
     {
        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImageName:@"imgGroupInvitationIcon" highImageName:nil target:self action:@selector(back)];
-       viewController.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImageName:@"dd_Activity_add" highImageName:nil target:self action:@selector(more)];
+        viewController.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImageName:@"dd_Activity_add" highImageName:nil target:self action:@selector(more:)];
     }
     [super pushViewController:viewController animated:animated];
 }
@@ -78,9 +79,40 @@
     [self presentViewController:nai animated:YES completion:nil];
 }
 
-- (void)more
+- (void)more:(UIButton *)sender
 {
-    [self popToRootViewControllerAnimated:YES];
+    
+    sender.selected = !sender.selected;
+    [self s:sender];
+}
+
+- (void)s:(UIButton *)sender{
+    CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+    if (sender.selected) {
+        anim.toValue = @(-M_PI_4);
+    }else{
+        anim.toValue = @(0);
+    }
+    //持续时间
+    anim.duration = 0.3;
+    //变形后保持状态
+    anim.removedOnCompletion = NO;
+    anim.fillMode = kCAFillModeForwards;
+    
+    [sender.layer addAnimation:anim forKey:nil];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self more:nil];
+    
+}
+
+- (UIButton *)rightButton{
+    
+    if (_rightButton == nil) {
+        _rightButton = [UIButton new];
+    }
+    return _rightButton;
 }
 @end
 
